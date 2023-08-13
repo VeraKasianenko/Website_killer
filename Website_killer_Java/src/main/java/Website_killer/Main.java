@@ -13,6 +13,11 @@ public class Main {
     public static void main(String[] args) {
         try {
             File lockFile = new File("app.lock");
+
+            // Удаление файла блокировки, если он существует
+            if (lockFile.exists()) {
+                lockFile.delete();
+            }            
             RandomAccessFile randomAccessFile = new RandomAccessFile(lockFile, "rw");
             FileChannel channel = randomAccessFile.getChannel();
 
